@@ -9,33 +9,56 @@
             <div class="calculator">
                 <div class="inputs">
                     <label for="input-bill">Bill</label>
-                    <input id="input-bill" class="input-bill" type="number" placeholder="Bill">
+                    <input id="input-bill" class="input-bill" type="number" placeholder="Bill" min="0" step="0.5">
 
-                    <label for="input-tip">Tip</label>
-                    <input id="input-tip" class="input-tip" type="number" placeholder="Tip">
+                    <label for="input-tip">Tip %</label>
+                    <input id="input-tip" class="input-tip" type="number" placeholder="Tip" min="0">
 
                     <label for="input-people"># of people</label>
-                    <input id="input-people" class="input-people" type="number" placeholder="# of people">
+                    <input id="input-people" class="input-people" type="number" placeholder="# of people" min="0">
                 </div>
                 <div class="results">
                     <label for="display-tip">Tip</label>
-                    <p id="display-tip" class="display-tip"></p>
+                    <p id="display-tip" class="display-tip">0.00</p>
 
                     <label for="display-tip">Total</label>
-                    <p id="display-total" class="display-total"></p>
+                    <p id="display-total" class="display-total">0.00</p>
+
+                    <label for="display-per-person">Per person</label>
+                    <p id="display-per-person" class="display-per-person">0.00</p>
                 </div>
             </div>
         </main>
 
         <script>
             // Declare variables
-            const billInput = document.querySelector("#input-bill")
-            const tipInput = document.querySelector("#input-tip")
-            const peopleInput = document.querySelector("#input-people")
-            const displayTip = document.querySelector("#display-tip")
-            const displayTotal = document.querySelector("#display-total")
+            const billInput = document.querySelector("#input-bill");
+            const tipInput = document.querySelector("#input-tip");
+            const peopleInput = document.querySelector("#input-people");
+            const displayTip = document.querySelector("#display-tip");
+            const displayTotal = document.querySelector("#display-total");
+            const displayPerPerson = document.querySelector("#display-per-person");
 
+            //Event Listeners
+            billInput.addEventListener("input", calculateBill);
+            tipInput.addEventListener("input", calculateBill);
+            peopleInput.addEventListener("input", calculateBill);
 
+            function calculateBill(e) {
+                const bill = parseFloat(billInput.value);
+                const percent = parseFloat(tipInput.value);
+                const numPeople = parseFloat(peopleInput.value);
+
+                if (!bill || !percent || !numPeople) return;
+
+                const tip = bill * percent / 100;
+                const total = bill + tip;
+                const costPerPerson = total / numPeople;
+
+                displayTip.innerHTML = tip.toFixed(2);
+                displayTotal.innerHTML = total.toFixed(2);
+                displayPerPerson.innerHTML = costPerPerson.toFixed(2);
+            }
         </script>
     </body>
 </html>
