@@ -8,15 +8,34 @@
             <h1>Calculator</h1>
             <div class="calculator">
                 <div class="inputs">
+                    <label for="input-bill">Bill</label>
                     <input id="input-bill" class="input-bill" type="number" placeholder="Bill">
+
+                    <label for="input-tip">Tip</label>
                     <input id="input-tip" class="input-tip" type="number" placeholder="Tip">
-                    <input id="input-people" class="input-people" type="number" placeholder="Number of people">
+
+                    <label for="input-people"># of people</label>
+                    <input id="input-people" class="input-people" type="number" placeholder="# of people">
                 </div>
                 <div class="results">
+                    <label for="display-tip">Tip</label>
                     <p id="display-tip" class="display-tip"></p>
+
+                    <label for="display-tip">Total</label>
                     <p id="display-total" class="display-total"></p>
                 </div>
             </div>
         </main>
+
+        <script>
+            // Declare variables
+            const billInput = document.querySelector("#input-bill")
+            const tipInput = document.querySelector("#input-tip")
+            const peopleInput = document.querySelector("#input-people")
+            const displayTip = document.querySelector("#display-tip")
+            const displayTotal = document.querySelector("#display-total")
+
+
+        </script>
     </body>
 </html>
