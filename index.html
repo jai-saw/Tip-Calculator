@@ -2,10 +2,76 @@
 <html lang="en">
     <head>
         <title>Tip Calculator</title>
+        <style>
+            .title {
+                text-align: center;
+            }
+
+            /* Container Div */
+            .calculator {
+                width: 500px;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            /* Inputs */
+            .inputs {
+                align-self: flex-start;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .inputs label {
+                font-weight: bold;
+                margin: 0.5em 0 0.5em 0;
+            }
+
+            /* Results */
+            .results {
+                align-self: flex-end;
+                display: grid;
+                grid-template-areas:
+                        "a b"
+                        "c d"
+                        "e f";
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 1rem;
+            }
+
+            .results .label {
+                font-weight: bold;
+            }
+
+            .label-total {
+                grid-area: a;
+            }
+
+            .display-total {
+                grid-area: b;
+            }
+
+            .label-tip {
+                grid-area: c;
+            }
+
+            .display-tip {
+                grid-area: d;
+            }
+
+            .label-person {
+                grid-area: e;
+            }
+
+            .display-per-person {
+                grid-area: f;
+            }
+        </style>
     </head>
     <body>
         <main>
-            <h1>Calculator</h1>
+            <h1 class="title">Tip Calculator</h1>
             <div class="calculator">
                 <div class="inputs">
                     <label for="input-bill">Bill</label>
@@ -18,13 +84,13 @@
                     <input id="input-people" class="input-people" type="number" placeholder="# of people" min="0">
                 </div>
                 <div class="results">
-                    <label for="display-tip">Tip</label>
+                    <p class="label label-tip">Tip:</p>
                     <p id="display-tip" class="display-tip">0.00</p>
 
-                    <label for="display-tip">Total</label>
+                    <p class="label label-total">Total:</p>
                     <p id="display-total" class="display-total">0.00</p>
 
-                    <label for="display-per-person">Per person</label>
+                    <p class="label label-person">Per person:</p>
                     <p id="display-per-person" class="display-per-person">0.00</p>
                 </div>
             </div>
