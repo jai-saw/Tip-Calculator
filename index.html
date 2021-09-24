@@ -11,9 +11,13 @@
             .calculator {
                 width: 500px;
                 margin: auto;
+
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
+
+                padding: 1em;
+                border: 1px solid black;
             }
 
             /* Inputs */
@@ -40,7 +44,7 @@
                 grid-gap: 1rem;
             }
 
-            .results .label {
+            .label {
                 font-weight: bold;
             }
 
@@ -75,10 +79,11 @@
             <div class="calculator">
                 <div class="inputs">
                     <label for="input-bill">Bill</label>
-                    <input id="input-bill" class="input-bill" type="number" placeholder="Bill" min="0" step="0.5">
+                    <input id="input-bill" class="input-bill" type="number" placeholder="Bill" min="0">
 
                     <label for="input-tip">Tip %</label>
-                    <input id="input-tip" class="input-tip" type="number" placeholder="Tip" min="0">
+                    <input id="input-tip" class="input-tip" type="number" placeholder="Tip" min="0" max="100"
+                           step="0.5">
 
                     <label for="input-people"># of people</label>
                     <input id="input-people" class="input-people" type="number" placeholder="# of people" min="0">
@@ -117,7 +122,7 @@
 
                 if (!bill || !percent || !numPeople) return;
 
-                const tip = bill * percent / 100;
+                const tip = bill * Math.min(percent, 100) / 100;
                 const total = bill + tip;
                 const costPerPerson = total / numPeople;
 
